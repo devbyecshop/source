@@ -1,0 +1,56 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!--{if $im }-->
+<style>
+#kefu{ width:120px; height:auto; position:fixed; top:50%; right:5px;z-index:8888; background:#fff; border:1px solid #d1d1d1;border-top:2px solid #ca2d25; display:none; margin-top:-240px;}
+#kefu .top{ width:100%; height:35px; line-height:35px;font-family:"Microsoft YaHei"; font-size:14px; color:#333; font-weight:bold; text-align:center;}
+#kefu .middle{ font-size:12px; width:100%; text-align:center;}
+#kefu .middle p{ color:#991C0A;}
+#kefu .close{float:right; margin-right:10px; margin-top:10px; cursor:pointer;}
+.right_bar{ width:28px; height:95px; position:fixed; top:50%; right:0; margin-top:-242px; z-index:9999;}
+.right_bar img{cursor:pointer;}
+</style>
+<div id="kefu">
+	<div class="top">
+		在线客服<img src="images/im/close.gif" class="close" />
+	</div>
+<div class="middle">
+	<!-- {if $im.qq} -->
+    <!-- {foreach from=$im.qq item=item} -->
+    <p style="padding-bottom:6px;">
+    	<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={$item}&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:{$item}:51" alt="点击这里给我发消息" title="点击这里给我发消息"/></a><br />
+	</p>
+    <!-- {/foreach} -->
+    <!-- {/if} -->
+	
+	<!-- {if $im.service_phone} -->
+	<b style="padding-top:8px;display:block;">客服电话</b>
+	<p style="padding-bottom:6px;">{$im.service_phone}</p>
+	<!-- {/if} -->
+	<!-- {if $im.ww} -->
+	<b style="padding-top:8px;display:block;">阿里旺旺</b>
+		<!-- {foreach from=$im.ww item=item} -->
+		<p style="padding-bottom:6px;">
+			<a target="_blank" href="http://www.taobao.com/webww/ww.php?ver=3&touid={$item}&siteid=cntaobao&status=1&charset=utf-8"><img border="0" src="http://amos.alicdn.com/realonline.aw?v=2&uid={$item}&site=cntaobao&s=1&charset=utf-8" alt="点击这里给我发消息" /></a><br />
+		</p>
+		<!-- {/foreach} -->
+	<!-- {/if} -->
+</div>
+</div>
+<div class="right_bar">
+	<img src="images/im/right_bar.jpg" />
+</div>
+<script type="text/javascript" src="images/im/jquery.min.js"></script>
+<script>
+$(function(){
+	$('.right_bar').click(function(){
+		$(this).hide();
+		$('#kefu').show();
+	});
+	$('#kefu .close').click(function(){
+		$('.right_bar').show();
+		$('#kefu').hide();
+	});
+});
+</script>
+</body>
+<!-- {/if} -->
